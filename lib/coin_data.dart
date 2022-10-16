@@ -1,3 +1,6 @@
+import 'package:http/http.dart' as http;
+import 'price_screen.dart';
+
 const List<String> currenciesList = [
   'AUD',
   'BRL',
@@ -28,4 +31,14 @@ const List<String> cryptoList = [
   'LTC',
 ];
 
-class CoinData {}
+class CoinData {
+  final double exchangeValue;
+
+  const CoinData({this.exchangeValue});
+
+  factory CoinData.fromJson(Map<String, dynamic> json) {
+    return CoinData(
+      exchangeValue: json['rate'],
+    );
+  }
+}
